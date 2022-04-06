@@ -1,0 +1,44 @@
+.header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.name {
+    color: #61dafb;
+    margin-top: 0;
+}
+
+.inputarea {
+    border: #3ab5d7 2px solid; 
+    margin: 10px;
+    text-align: center;
+    height: 40px;
+    width: 250px;
+    border-radius: 10px;
+    background-color: #282c34;
+    color: white;
+    font-weight: 700;
+}
+
+.inputarea::placeholder {
+    color: white;
+}
+
+.btn {
+    background: #3ab5d7;
+    border: #3ab5d7 1px solid;
+    border-radius: 15px;
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    color: #282c34;
+    font-weight: 1000;
+    display: block;
+}
+
