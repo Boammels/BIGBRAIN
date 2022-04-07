@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../styles/Login.module.css';
 
 function Register () {
   const navigate = useNavigate();
+  useEffect(
+    () => {
+      if (localStorage.token !== '') {
+        navigate('/dashboard')
+      }
+      console.log(1);
+    }
+  );
   return (
     <>
       <header className={styles.header}>
         <h1>Join <a className={styles.name}>BigBrain</a> now!</h1>
-        <RegisterForm success={() => navigate('/success')} />
+        <RegisterForm success={() => navigate('/dashboard')} />
       </header>
     </>
   )
@@ -46,13 +54,13 @@ function RegisterForm ({ success }) {
         type = "text"
         placeholder = "Name"
         className = {styles.inputarea}
-        onChange = { e => setName(e.target.value)}
+        onChange = {e => setName(e.target.value)}
       />
       <input
         type = "text"
         placeholder = "E-mail Address"
         className = {styles.inputarea}
-        onChange = { e => setEmail(e.target.value)}
+        onChange = {e => setEmail(e.target.value)}
       />
       <input
         type = "password"

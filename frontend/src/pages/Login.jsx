@@ -1,15 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../styles/Login.module.css';
 
 function Login () {
   const navigate = useNavigate();
+  useEffect(
+    () => {
+      if (localStorage.token !== '') {
+        navigate('/dashboard')
+      }
+      console.log(1);
+    }
+  );
   return (
     <>
       <header className={styles.header}>
         <h1>Welcome to <a className={styles.name}>BigBrain</a>!</h1>
-        <LoginForm success={() => navigate('/success')} />
+        <LoginForm success={() => navigate('/dashboard')} />
       </header>
     </>
   )
@@ -44,13 +52,13 @@ function LoginForm ({ success }) {
         type = "text"
         placeholder = "E-mail Address"
         className = {styles.inputarea}
-        onChange = { e => setEmail(e.target.value)}
+        onChange = {e => setEmail(e.target.value)}
       />
       <input
         type = "password"
         placeholder = "Password"
         className = {styles.inputarea}
-        onChange = { e => setPassword(e.target.value)}
+        onChange = {e => setPassword(e.target.value)}
       />
       <div>
         <button className={styles.btn} onClick={login}>Login</button>

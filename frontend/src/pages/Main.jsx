@@ -6,7 +6,7 @@ import styles from '../styles/Main.module.css';
 import logo from '../logo.svg';
 
 function Main () {
-  const str = "Let's go!"
+  const str = "Let's go!";
   return (
     <>
       <header className={styles.header}>
