@@ -12,6 +12,13 @@
 .name {
     color: #61dafb;
     margin-top: 0;
+    font-size: 43px;
+}
+
+.welcome {
+    color: white;
+    margin-top: 0;
+    font-size: 33px;
 }
 
 .inputarea {

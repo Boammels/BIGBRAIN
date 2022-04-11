@@ -15,7 +15,6 @@ function CreateQuiz () {
       console.log(1);
     }
   );
-
   return (
     <>
       <Top />
@@ -30,22 +29,25 @@ function CreateQuiz () {
 const QuizForm = ({ success, failed }) => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
-
   const submit = async () => {
-    const response = await fetch('http://localhost:5005/admin/quiz/new', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-        Authorization: 'Bearer ' + localStorage.token,
-      },
-      body: JSON.stringify({
-        name,
-      })
-    })
-    if (response.status === 200) {
-      success();
+    if (name === '') {
+      alert('The game title cannot be empty!');
     } else {
-      failed(response.status);
+      const response = await fetch('http://localhost:5005/admin/quiz/new', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: 'Bearer ' + localStorage.token,
+        },
+        body: JSON.stringify({
+          name,
+        })
+      })
+      if (response.status === 200) {
+        success();
+      } else {
+        failed(response.status);
+      }
     }
   }
   console.log(name);

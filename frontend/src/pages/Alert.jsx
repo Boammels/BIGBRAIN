@@ -1,21 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import alert from '../styles/Alert.module.css';
-import PropTypes from 'prop-types';
 
-const Error = ({ code }) => {
+const Error = () => {
+  const code = useParams().errorId;
   let message = '';
-  let link = '/';
-  let buttonMsg = '';
+  let link = '/dashboard';
+  let buttonMsg = 'Dashboard';
   if (code === '403') {
     message = ': Access Forbidden';
-    link = '/login';
-    buttonMsg = 'Login Now';
+    if (localStorage.token === '') {
+      link = '/login';
+      buttonMsg = 'Login Now';
+    }
   } else if (code === '400') {
     message = ': Invalid Input';
-    link = '/dashboard';
-    buttonMsg = 'Dashboard';
+  } else if (code === '404') {
+    message = ': Not found';
   }
   return (
     <>
@@ -28,10 +30,6 @@ const Error = ({ code }) => {
       </Link>
     </>
   );
-}
-
-Error.propTypes = {
-  code: PropTypes.any,
 }
 
 export default Error;

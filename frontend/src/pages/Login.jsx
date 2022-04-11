@@ -8,7 +8,7 @@ function Login () {
   useEffect(
     () => {
       if (localStorage.token !== '') {
-        navigate('/dashboard')
+        navigate('/dashboard');
       }
       console.log(1);
     }
@@ -16,7 +16,7 @@ function Login () {
   return (
     <>
       <header className={styles.header}>
-        <h1>Welcome to <a className={styles.name}>BigBrain</a>!</h1>
+        <h1 className={styles.welcome}>Welcome to <span className={styles.name}>BigBrain</span>!</h1>
         <LoginForm success={() => navigate('/dashboard')} />
       </header>
     </>
@@ -39,9 +39,11 @@ function LoginForm ({ success }) {
     });
     const data = await response.json();
     if (response.status === 200) {
+      window.location.reload();
       localStorage.setItem('token', data.token);
       success();
     } else {
+      window.location.reload();
       const alertstr = 'Status ' + response.status + ': ' + data.error;
       alert(alertstr);
     }

@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Main.module.css';
 import logo from '../logo.svg';
 
@@ -11,7 +9,7 @@ function Main () {
     <>
       <header className={styles.header}>
         <img src={logo} className={styles.logo}></img>
-        <h1>Welcome to <a className={styles.name}>BigBrain</a>!</h1>
+        <h1 className={styles.welcome}>Welcome to <span className={styles.name}>BigBrain</span>!</h1>
         <div className={styles.join_area}>
           <input type="text" className={styles.join_input} placeholder='Game Pin'/>
           <button className={styles.join}>{str}</button>

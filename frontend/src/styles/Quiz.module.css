@@ -1,3 +1,5 @@
+
+/* dashboard */
 .quizList {
     margin: auto;
     margin-top: 10px;
@@ -8,56 +10,118 @@
     flex-flow: row wrap;
 }
 
-
 .quizItem {
+    border-radius: 10px;
     margin: 10px;
     height: 300px;
     width: calc(100% - 22px);
-    border: #61dafb 1px solid;
 }
 
-@media screen and (width > 600px) {
+@media screen and (width > 800px) {
     .quizItem {
         width: calc(50% - 22px);
     }
 }
 
-@media screen and (width > 900px) {
+@media screen and (width > 1200px) {
     .quizItem {
         width: calc(33.33333% - 22px);
     }
 }
 
-@media screen and (width > 1200px) {
+@media screen and (width > 1600px) {
     .quizItem {
         width: calc(25% - 22px);
     }
 }
 
-@media screen and (width > 1500px) {
-    .quizItem {
-        width: calc(20% - 22px);
-    }
+.buttonAreaDashboard {
+    border-radius: 10px;
+    width:100%;
+    align-items: center;
+    text-align: center;
+    background-color: blue;
+    display:flex;
+    justify-content: center;
+    height: 50px;
+}
+
+.deleteBtn {
+    border-top-left-radius: 10px;
+    color: #282c34;
+    background-color: #61dafb;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.editBtn {
+    color: #282c34;
+    background-color: #61dafb;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.startBtn {
+    border-top-right-radius: 10px;
+    color: #282c34;
+    background-color: #61dafb;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.deleteBtn:hover {
+    color: #3ab5d7;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.editBtn:hover {
+    color: #3ab5d7;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.startBtn:hover {
+    color: #3ab5d7;
+    flex: 1;
+    height: 100%;
+    border: none;
+}
+
+.GameLink {
+    margin-top: 5px;
+    padding:10px;
+    height: calc(100% - 75px);
+    background-color: #e8e2d1;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .gameName {
-    color: black;
-    margin: 5px;
+    color: #282c34;
+    margin-top: 10px;
+    font-size: 22px;
 }
 
 .gameCreated {
-    color: rgb(98, 98, 98);
-    margin: 5px;
+    color: #696969;
 }
 
 .newGameLink {
     height: 100%;
     width: 100%;
     background-color: rgb(203, 203, 203);
+    color: rgb(98, 98, 98);
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .quizCreate {
@@ -66,6 +130,7 @@
     color: rgb(98, 98, 98);
 }
 
+/*  quiz/new  */
 .createPage {
     background-color: #282c34;
     width: 100%;

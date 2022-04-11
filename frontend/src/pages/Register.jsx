@@ -16,7 +16,7 @@ function Register () {
   return (
     <>
       <header className={styles.header}>
-        <h1>Join <a className={styles.name}>BigBrain</a> now!</h1>
+      <h1 className={styles.welcome}>Join <span className={styles.name}>BigBrain</span> now!</h1>
         <RegisterForm success={() => navigate('/dashboard')} />
       </header>
     </>
@@ -41,9 +41,11 @@ function RegisterForm ({ success }) {
     });
     const data = await response.json();
     if (response.status === 200) {
+      window.location.reload();
       localStorage.setItem('token', data.token);
       success();
     } else {
+      window.location.reload();
       const alertstr = 'Status ' + response.status + ': ' + data.error;
       alert(alertstr);
     }
