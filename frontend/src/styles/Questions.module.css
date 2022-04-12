@@ -1,9 +1,69 @@
+.titleArea {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+}
 
 .title {
+    width: calc(100% - 180px);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    padding-left: 10px;
     margin: auto;
+    font-size: 30px;
+    height: 40px;
+    font-weight: bolder;
+    border-color: #282c34;
+    color: #282c34;
+    border-style: solid;
+    border-right: none;
+}
+
+.confirmNameGame {
+    height: 47px;
+    width: 100px;
+    background-color: #61dafb;
+    border-style: solid;
+    border-left: none;
+    border-width: 0;;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border-color: #282c34;
+    color: #282c34;
+    position: relative;
+    top: 1px;
+}
+
+.confirmNameGame:hover {
+    background-color: #3ab5d7;
+}
+
+.deleteGame {
+    width: 80%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    height: 40px;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 20px;
+    color: red;
+    padding: 0;
+    display: block;
+    align-items: center;
+    font-size: 20px;
+    border: red solid 1px;
+}
+
+.deleteGame:hover {
+    color: darkred;
 }
 
 .questionList {
+    max-width: 1200;
     align-items: center;
     width: 80%;
     height: fit-content;
@@ -61,9 +121,12 @@
 .question {
     font-size: 24px;
     font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .questionMark {
+
     font-size: 15px;
     font-weight: 600;
     color: #797979;
@@ -96,7 +159,102 @@
     background-color: white;
 }
 
+/* Question Detail */
+
 .newQuestion:hover {
     background-color: #cecece;
 }
 
+.questionCancel {
+    background-color: #282c34;
+    color: #61dafb;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #282c34;
+    float: right;
+    margin: 5px;
+}
+
+.questionCancel:hover {
+    color: #3ab5d7;
+}
+
+.questionSave {
+    background-color: #282c34;
+    color: #61dafb;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #282c34;
+    float: right;
+    margin: 5px;
+}
+
+.questionSave:hover {
+    color: #3ab5d7;
+}
+
+.longInput {
+    padding: 5px;
+    width:calc(100% - 15px);
+    height: 25px;
+    font-size: 15px;
+    border-radius: 5px;
+    border-color: #61dafb;
+    border-style: solid;
+    color: #282c34
+}
+
+.longInput::placeholder {
+    color: #797979;
+}
+
+.answer {
+    margin-left: 15px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.answerInput {
+    width: 50%;
+    height: 20px;
+}
+
+.answerSave {
+    padding: 0;
+    position: relative;
+    top: 6px;
+    left: 10px;
+}
+
+.imagePreview {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.videopreview {
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+}
+
+.inputSmall {
+    width: 50px;
+}
+
+.smallBtn {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    align-items: center;
+    position: relative;
+    top: 6px;
+    margin: 5px;
+    padding: 0;
+    border: none;
+    background-color: #e8e2d1;
+}

@@ -11,6 +11,7 @@ import Dashboard from './pages/UserPage';
 import Error from './pages/Alert';
 import CreateQuiz from './pages/CreateQuiz';
 import Quiz from './pages/QuizDetail';
+import Question from './pages/QuestionDetail';
 
 function App () {
   return (
@@ -24,6 +25,7 @@ function App () {
           <Route path="/quiz/new" element={<CreateQuiz />} />
           <Route path="/error/:errorId" element={<Error />} />
           <Route path="/quiz/:quizId" element={<Quiz />} />
+          <Route path="/quiz/:quizId/:questionId" element={<Question />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -4,6 +4,7 @@ import Top from './TopBar';
 import styles from '../styles/Questions.module.css';
 import Delete from '@material-ui/icons/DeleteOutlined';
 import Edit from '@material-ui/icons/EditOutlined';
+import DoneOutline from '@material-ui/icons/DoneOutline';
 
 function Quiz () {
   const [questions, setQuestions] = useState([]);
@@ -32,7 +33,6 @@ function Quiz () {
           setTitle(data.name);
           setQuestions(data.questions);
           setThumbnail(data.thumbnail);
-          console.log(data.questions)
           setSuccess(true);
         } else {
           navigate('/error/403')
@@ -42,6 +42,11 @@ function Quiz () {
   );
 
   const updateQuiz = async () => {
+    if (name === '') {
+      alert('The name of the quiz cannot be empty');
+      window.location.reload();
+      return;
+    }
     const response = await fetch('http://localhost:5005/admin/quiz/' + quizId, {
       method: 'PUT',
       headers: {
@@ -64,9 +69,12 @@ function Quiz () {
 
   // remove a question from the quiz
   const removeQuestion = (qid) => {
-    console.log(qid);
+    const r = confirm('Are you sure to delete this question?');
+    if (r === false) {
+      return;
+    }
+    // console.log(qid);
     setQuestions(questions.splice(qid, 1));
-    console.log(questions);
     setSuccess(false);
     updateQuiz();
   }
@@ -75,7 +83,8 @@ function Quiz () {
   const addQuestion = () => {
     const newQuestion = {
       type: 'multiple',
-      question: 'Title of the question112323',
+      question: 'Title of the question1',
+      timelimit: 5,
       mark: 5,
       answers: [
         {
@@ -87,11 +96,10 @@ function Quiz () {
           type: false,
         },
       ],
-      url: null,
+      url: '',
+      urltype: 'none',
     }
-    setQuestions(questions.push(newQuestion));
-    setSuccess(false);
-    updateQuiz();
+    setQuestions(questions.concat(newQuestion));
   }
 
   // deleting a whole game
@@ -121,11 +129,18 @@ function Quiz () {
       {success &&
         <>
           <div className={styles.questionList}>
-            <h1 className={styles.title}>{name}</h1>
-            <button
-              className={styles.deleteGame}
-              onClick={() => deleteGame()}
-            ><Delete></Delete></button>
+            <div className={styles.titleArea}>
+              <input
+                type='text'
+                className={styles.title}
+                value={name}
+                onChange={e => setTitle(e.target.value)}
+              />
+              <button
+                className={styles.confirmNameGame}
+                onClick={() => updateQuiz()}
+              ><DoneOutline></DoneOutline></button>
+            </div>
             {questions.map((question) => {
               return (
                 <div key={questions.indexOf(question).toString()} className={styles.questionItem}>
@@ -134,11 +149,20 @@ function Quiz () {
                       className={styles.questionDelete}
                       onClick={() => removeQuestion(questions.indexOf(question))}
                     ><Delete></Delete></button>
-                    <button className={styles.questionEdit}><Edit></Edit></button>
+                    <button
+                      className={styles.questionEdit}
+                      onClick={() => {
+                        if (confirm('Press this will automatically save all your changes, are you sure?') === false) {
+                          return;
+                        }
+                        updateQuiz();
+                        navigate(questions.indexOf(question).toString());
+                      }}
+                    ><Edit></Edit></button>
                   </div>
                   <div className={styles.questionContent}>
-                    <span className={styles.question}>{question.question} </span>
-                    <span className={styles.questionMark}>worths {question.mark} marks</span>
+                    <p className={styles.question}>{question.question} </p>
+                    <p className={styles.questionMark}>worths {question.mark} marks</p>
                     {question.answers.map((ans, index) => (
                       <p
                         key={index.toString()}
@@ -153,6 +177,10 @@ function Quiz () {
               className={styles.newQuestion}
               onClick={() => addQuestion()}
             >Add a New Question</button>
+            <button
+              className={styles.deleteGame}
+              onClick={() => deleteGame()}
+            ><Delete></Delete></button>
           </div>
         </>
       }
