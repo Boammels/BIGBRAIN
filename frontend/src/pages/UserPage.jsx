@@ -6,7 +6,7 @@ import Edit from '@material-ui/icons/EditOutlined';
 import Start from '@material-ui/icons/PlayArrow';
 // import PropTypes from 'prop-types';
 // import PropTypes from 'prop-types';
-import Top from './TopBar'
+import Top from './TopBar';
 import styles from '../styles/Quiz.module.css';
 
 function User () {
@@ -26,12 +26,36 @@ function User () {
     })
     if (response.status === 200) {
       const data = await response.json();
+      console.log(data.quizzes);
       setQuizzes(data.quizzes);
       setSuccess(true);
     } else {
       navigate('/error/403')
     }
   }, [load]);
+
+  const fetchGame = async (quizId) => {
+    const response = await fetch('http://localhost:5005/admin/quiz/' + quizId, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.token,
+      }
+    })
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(data);
+      const r = confirm('The seesion ID is: ' + data.active + ', press OK to copy the session ID and share with your friends!');
+      if (r) {
+        navigator.clipboard.writeText(data.active.toString());
+        navigate('/quiz/' + quizId + '/session/' + data.active);
+      } else {
+        navigate('/quiz/' + quizId + '/session/' + data.active);
+      }
+    } else {
+      navigate('/error/403')
+    }
+  }
 
   return (
     <>
@@ -82,7 +106,31 @@ function User () {
                   ><Edit></Edit></button>
                   <button
                     className={styles.startBtn}
-                    onClick={() => console.log('start' + game.id)}
+                    onClick={
+                      async () => {
+                        if (game.active === null) {
+                          const r = confirm('Start the game now?');
+                          if (r === false) {
+                            return;
+                          }
+                          const response = await fetch('http://localhost:5005/admin/quiz/' + game.id + '/start', {
+                            method: 'POST',
+                            headers: {
+                              'Content-type': 'application/json',
+                              Authorization: 'Bearer ' + localStorage.token,
+                            }
+                          })
+                          const data = await response.json();
+                          if (response.status === 200) {
+                            fetchGame(game.id);
+                          } else {
+                            alert(response.status + ': ' + data.error);
+                          }
+                        } else {
+                          navigate('/quiz/' + game.id + '/session/' + game.active);
+                        }
+                      }
+                    }
                   ><Start></Start></button>
                 </div>
                 <Link to={'/quiz/' + game.id} style={{ textDecoration: 'none' }}>

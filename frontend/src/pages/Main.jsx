@@ -5,6 +5,7 @@ import logo from '../logo.svg';
 
 function Main () {
   const str = "Let's go!";
+  localStorage.setItem('token', '');
   return (
     <>
       <header className={styles.header}>

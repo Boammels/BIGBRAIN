@@ -12,6 +12,8 @@ import Error from './pages/Alert';
 import CreateQuiz from './pages/CreateQuiz';
 import Quiz from './pages/QuizDetail';
 import Question from './pages/QuestionDetail';
+import Session from './pages/Session';
+import Result from './pages/Results';
 
 function App () {
   return (
@@ -26,6 +28,8 @@ function App () {
           <Route path="/error/:errorId" element={<Error />} />
           <Route path="/quiz/:quizId" element={<Quiz />} />
           <Route path="/quiz/:quizId/:questionId" element={<Question />} />
+          <Route path="/quiz/:quizId/session/:sessionId" element={<Session />} />
+          <Route path="/result/:sessionId" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </>

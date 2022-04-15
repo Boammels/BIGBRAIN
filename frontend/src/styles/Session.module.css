@@ -1,0 +1,66 @@
+.page {
+    background-color: #282c34;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageTitle {
+    color: white;
+}
+
+.smallFont {
+    color: white;
+    margin: 20px;
+    margin-bottom: 40px;
+
+}
+
+.start {
+    background-color: #282c34;
+    color: #61dafb;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border-color: #61dafb;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    display: block;
+}
+
+.start:hover {
+    color: #3ab5d7;
+    border-color: #3ab5d7;
+}
+
+.cancel {
+    margin-top: 10px;
+    background-color: #282c34;
+    color: rgb(181, 181, 181);
+    width: 200px;
+    height: 50px;
+    font-size: 15px;
+    border: none;
+    display: block;
+    text-decoration: underline;
+}
+
+.cancel:hover {
+    color: #616161
+}
+
+.answerCorrect {
+    color: green;
+    font-weight: 1000;
+    font-size: 15;
+}
+
+.answerWrong {
+    color: red;
+    font-weight: 1000;
+    font-size: 15;
+}
