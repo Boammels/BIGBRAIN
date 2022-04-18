@@ -14,6 +14,7 @@ import Quiz from './pages/QuizDetail';
 import Question from './pages/QuestionDetail';
 import Session from './pages/Session';
 import Result from './pages/Results';
+import Join from './pages/Join';
 
 function App () {
   return (
@@ -30,6 +31,7 @@ function App () {
           <Route path="/quiz/:quizId/:questionId" element={<Question />} />
           <Route path="/quiz/:quizId/session/:sessionId" element={<Session />} />
           <Route path="/result/:quizId/:sessionId" element={<Result />} />
+          <Route path="/join" element={<Join />} />
         </Routes>
       </BrowserRouter>
     </>

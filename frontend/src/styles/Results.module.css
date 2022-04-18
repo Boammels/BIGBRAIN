@@ -1,0 +1,24 @@
+
+.resultArea {
+    margin: auto;
+    text-align: center;
+    margin-top: 10px;
+    padding: 10px; 
+    width: 80%;
+    min-height: 600px;
+    background-color: #e8e2d1;
+}
+
+.champ {
+    font-size: 20px;
+    padding: 20px;
+}
+
+.first {
+    color: darkgoldenrod;
+    font-size: 25px;
+    font-weight: 1000;
+    margin-right: 10px;
+    position: relative;
+    top:1px;
+}
