@@ -29,7 +29,7 @@ function App () {
           <Route path="/quiz/:quizId" element={<Quiz />} />
           <Route path="/quiz/:quizId/:questionId" element={<Question />} />
           <Route path="/quiz/:quizId/session/:sessionId" element={<Session />} />
-          <Route path="/result/:sessionId" element={<Result />} />
+          <Route path="/result/:quizId/:sessionId" element={<Result />} />
         </Routes>
       </BrowserRouter>
     </>

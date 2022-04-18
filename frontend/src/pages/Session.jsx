@@ -14,7 +14,7 @@ function Session () {
   useEffect(
     () => {
       if (localStorage.token === '') {
-        navigate('/error/403')
+        navigate('/error/403');
       }
     }
   );
@@ -88,7 +88,7 @@ function Session () {
       }
     })
     if (response.status === 200) {
-      navigate('/result/' + sessionId);
+      navigate('/result/' + quizId + '/' + sessionId);
     } else {
       const data = await response.json();
       alert(response.status + ': ' + data.error);
@@ -146,7 +146,7 @@ function Session () {
                   <p className={styles.smallFont}>The result for the game is ready!</p>
                   <button
                     className={styles.start}
-                    onClick={() => navigate('/result/' + sessionId)}
+                    onClick={() => navigate('/result/' + quizId + '/' + sessionId)}
                   >Results</button>
                 </>
               }
