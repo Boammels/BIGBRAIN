@@ -145,7 +145,7 @@ function Question () {
   }
 
   const str1 = 'Question: ';
-  const str2 = 'URL and type of URL';
+  const str2 = 'URL and type of URL: ';
   console.log(url);
   console.log(urltype);
 
@@ -166,6 +166,9 @@ function Question () {
                       setQuestion(e.target.value);
                     }}
                   />
+                </div>
+                <div className={styles.sectionLine}></div>
+                <div>
                   <p>{str2}</p>
                   <input
                     type='url'
@@ -210,22 +213,7 @@ function Question () {
                     />
                   }
                 </div>
-                <div>Please select the type of the question:
-                  <p><Checkbox
-                    checked={type === 'multiple'}
-                    value={undefined}
-                    onChange={() => {
-                      setType('multiple');
-                    }}
-                  />Multiple Choice Question</p>
-                  <p><Checkbox
-                    checked={type === 'single'}
-                    value={undefined}
-                    onChange={() => {
-                      setType('single');
-                    }}
-                  />Single Choice Question</p>
-                </div>
+                <div className={styles.sectionLine}></div>
                 <p className={styles.questionMark}>
                   {mark > 1 && <button
                     className={styles.smallBtn}
@@ -242,6 +230,7 @@ function Question () {
                     onClick={() => setMark(mark + 1)}
                   ><Add></Add></button>
                 </p>
+                <div className={styles.sectionLine}></div>
                 <p className={styles.questionMark}>
                   {timelimit > 3 && <button
                     className={styles.smallBtn}
@@ -258,6 +247,24 @@ function Question () {
                     onClick={() => setTimeLimit(timelimit + 1)}
                   ><Add></Add></button>
                 </p>
+                <div className={styles.sectionLine}></div>
+                <div>Please select the type of the question:
+                  <p><Checkbox
+                    checked={type === 'multiple'}
+                    value={undefined}
+                    onChange={() => {
+                      setType('multiple');
+                    }}
+                  />Multiple Choice Question</p>
+                  <p><Checkbox
+                    checked={type === 'single'}
+                    value={undefined}
+                    onChange={() => {
+                      setType('single');
+                    }}
+                  />Single Choice Question</p>
+                </div>
+                <div className={styles.sectionLine}></div>
                 <div>Answers:
                   {answers.map((ans, index) => (
                     <Answer
@@ -280,7 +287,11 @@ function Question () {
               </div>
               <button
                 className={styles.questionCancel}
-                onClick={() => navigate('/quiz/' + quizId)}
+                onClick={() => {
+                  if (confirm('All unsaved changes will be aborted, are you sure to leave?')) {
+                    navigate('/quiz/' + quizId);
+                  }
+                }}
               ><CancelIcon></CancelIcon></button>
               <button
                 className={styles.questionSave}

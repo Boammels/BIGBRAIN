@@ -203,7 +203,7 @@ function Quiz () {
               <input
                 type='text'
                 className={styles.thumbnailInput}
-                placeholder='enter the url for the thumbnail of the quiz'
+                placeholder='Enter the url for the thumbnail of the quiz'
                 value={thumbnail === null ? '' : thumbnail}
                 onChange={e => setThumbnail(e.target.value)}
               />

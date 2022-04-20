@@ -44,6 +44,7 @@
 }
 
 .welcome {
+  text-align: center;
   color: white;
   margin-top: 0;
   font-size: 33px;
@@ -118,14 +119,24 @@
   background: grey;
 }
 
-.join_input {
+.joinInput {
+  text-align: center;
   display: block;
-  margin: auto;
-  width: 180px;
+  width: 350px;
+  border-radius: 10px;
+  border: #61dafb 1px solid;
+  background-color: #282c34;
+  color: #61dafb; 
+  margin: 10px;
   height: 35px;
   text-align: center;
   font-size: 15px;
   font-weight: 1000;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.joinInput::placeholder {
+  color:#5c757c;
+}
+
 

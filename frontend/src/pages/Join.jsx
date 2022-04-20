@@ -4,7 +4,7 @@ import styles from '../styles/Main.module.css';
 
 function Join () {
   const navigate = useNavigate();
-  const [name, setName] = useState('player');
+  const [name, setName] = useState('Player');
   const [sessionId, setSession] = useState('');
 
   const join = async () => {
@@ -44,7 +44,7 @@ function Join () {
         <button
           className={styles.join}
           onClick={() => join()}
-        ></button>
+        >Join Now!</button>
       </header>
     </>
   )
