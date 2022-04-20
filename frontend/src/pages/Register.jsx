@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../styles/Login.module.css';
 
 function Register () {
   const navigate = useNavigate();
-  useEffect(
-    () => {
-      if (localStorage.token !== '') {
-        navigate('/dashboard')
-      }
-      console.log(1);
-    }
-  );
   return (
     <>
       <header className={styles.header}>
@@ -28,6 +20,16 @@ function RegisterForm ({ success }) {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const register = async () => {
+    const re = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/gi;
+    if (!re.test(email)) {
+      alert('Invalid Email Address');
+      return;
+    } else if (password.length < 6) {
+      alert('The password must be at least 6 characters');
+      return;
+    } else if (name === '') {
+      alert('Name cannot be empty');
+    }
     const response = await fetch('http://localhost:5005/admin/auth/register', {
       method: 'POST',
       headers: {
@@ -41,11 +43,9 @@ function RegisterForm ({ success }) {
     });
     const data = await response.json();
     if (response.status === 200) {
-      window.location.reload();
       localStorage.setItem('token', data.token);
       success();
     } else {
-      window.location.reload();
       const alertstr = 'Status ' + response.status + ': ' + data.error;
       alert(alertstr);
     }
@@ -68,7 +68,7 @@ function RegisterForm ({ success }) {
         type = "password"
         placeholder = "Password"
         className = {styles.inputarea}
-        onChange = { e => setPassword(e.target.value)}
+        onChange = {e => setPassword(e.target.value)}
       />
       <div>
         <button className={styles.btn} onClick={register}>Register</button>

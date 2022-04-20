@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styles from '../styles/Login.module.css';
 
 function Login () {
   const navigate = useNavigate();
-  useEffect(
-    () => {
-      if (localStorage.token !== '') {
-        navigate('/dashboard');
-      }
-      console.log(1);
-    }
-  );
   return (
     <>
       <header className={styles.header}>

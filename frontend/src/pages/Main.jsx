@@ -23,7 +23,7 @@ function Main () {
           >LOGIN</button>
           <button
             className={styles.signup}
-            onClick={() => navigate('/login')}
+            onClick={() => navigate('/register')}
           >SIGN UP</button>
         </div>
       </header>
